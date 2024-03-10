@@ -35,28 +35,30 @@
 	<link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body class="justify-center items-center h-screen text-gray-100 bg-transparent">
-		<div id='stars'></div>
-		<div id='stars2'></div>
-		<div id='stars3'></div>
-    <header class="fixed mx-auto flex justify-center items-center flex-col py-0">
-        <h1 class="text-2xl font-bold text-center mb-1">Donate / Support / Sponsor</h1>
-        <p class="text-lg text-center mb-1">Get Donate / Support / Sponsor easy way from Bangladesh</p>
-    </header>
-    <main class="flex flex-col justify-center items-center h-screen">
-		<div class="mx-auto flex justify-center items-start flex-wrap py-4">
-			<section class="w-full md:w-1/2 px-4 mb-8">
-				<div class="flex flex-col items-center ml-8">
-					<img src="assets/img/default.jpg" alt="Avatar" class="w-24 h-24 rounded-full border-4 border-gray-200 mb-2">
-					<p class="text-lg">@sakibweb</p>
-					<p class="text-2xl font-bold">Sakibur Rahman</p>
-					<p class="text-sm text-center mt-2">With my full-stack development expertise and proficiency in modern technologies like Python, Node, PHP, MySQL... let's create something exceptional together!</p>
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <div class="container mx-auto flex justify-center items-center flex-col py-1 overflow-y-auto" style="height: calc(100vh - 56px);">
+        <header class="mx-auto flex justify-center items-center flex-col py-1 left-0 w-full">
+            <h1 class="text-lg text-center mb-1">Donate BD</h1>
+        </header>
+        <main class="flex flex-col justify-center items-center">
+			<h1 class="text-2xl font-bold text-center mb-1">Donate / Support / Sponsor</h1>
+            <p class="text-lg text-center mb-1">Get Donate / Support / Sponsor easy way from Bangladesh</p>
+		<div class="mx-auto flex justify-center items-start flex-wrap py-8">
+			<section class="w-full md:w-1/2 px-4 y-2">
+				<div class="flex flex-col items-center">
+					<img id="avatar" src="assets/img/default.jpg" alt="Avatar" class="w-24 h-24 rounded-full border-4 border-gray-200 mb-2">
+					<p id="nickname" class="text-lg">@sakibweb</p>
+					<p id="fullname" class="text-2xl font-bold">Sakibur Rahman</p>
+					<p id="bio" class="text-sm text-center mt-2">With my full-stack development expertise and proficiency in modern technologies like Python, Node, PHP, MySQL... let's create something exceptional together!</p>
 				</div>
 			</section>
-			<section class="w-full md:w-1/2 px-4 mb-8">
-				<div class="flex flex-col items-center mr-8">
+			<section class="w-full md:w-1/2 px-4 y-2">
+				<div class="flex flex-col items-center">
 					<img src="assets/img/handshake.png" alt="Handshake" class="h-24 mb-2">
 					<h2 class="text-2xl font-bold mb-4">Donate / Support / Sponsor</h2>
-					<p class="text-lg text-center mb-4">Get Donate / Support / Sponsor easy way from Bangladesh</p>
+					<p id="motiv" class="text-lg text-center mb-4 typewriter">A support from you can motivate me more.</p>
 				</div>
 			</section>
 		</div>
@@ -79,7 +81,7 @@
             <p class="text-sm">Design by: Sajid</p>
         </div>
     </footer>
-	
+    
 <script src="assets/js/app.js" type="application/javascript"></script>
 </body>
 </html>

@@ -7,9 +7,18 @@ html {
 header {
 	width: 100%;
 	text-align: center;
-	position: fixed;
+	position: sticky;
 	top: 0;
-	z-index: 10;
+	z-index: 1000;
+}
+
+body.mobile,
+body.tablet {
+	overflow-y: auto;
+}
+
+main {
+	margin-top: 50px;
 }
 #stars {
   width: 1px;
@@ -83,4 +92,29 @@ header {
 	position: fixed;
 	top: 0;
 	z-index: 10;
+}
+
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.typewriter {
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.typewriter.animating {
+    border-right: none;
+    animation: typewriter 2s steps(30) forwards;
+}
+
+
+#motiv {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
 }
