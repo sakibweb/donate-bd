@@ -33,6 +33,9 @@
     <link href="assets/css/tailwind.min.css" rel="stylesheet">
     <link href="assets/css/daisyui.min.css" rel="stylesheet">
 	<link href="assets/css/style.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="bkash/index.css">
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body class="justify-center items-center h-screen text-gray-100 bg-transparent">
     <div id='stars'></div>
@@ -40,36 +43,36 @@
     <div id='stars3'></div>
     <div class="container mx-auto flex justify-center items-center flex-col py-1 overflow-y-auto" style="height: calc(100vh - 56px);">
         <header class="mx-auto flex justify-center items-center flex-col py-1 left-0 w-full">
-            <h1 class="text-lg text-center mb-1">Donate BD</h1>
+            <h1 class="text-lg text-center mb-1 truncate" style="font-size: calc(0.8rem + 0.5vw);">Donate BD</h1>
         </header>
         <main class="flex flex-col justify-center items-center">
-			<h1 class="text-2xl font-bold text-center mb-1">Donate / Support / Sponsor</h1>
-            <p class="text-lg text-center mb-1">Get Donate / Support / Sponsor easy way from Bangladesh</p>
+			<h1 class="text-2xl font-bold text-center mb-1 truncate" style="font-size: calc(0.8rem + 0.5vw);">Donate / Support / Sponsor</h1>
+            <p class="text-lg text-center mb-1 truncate" style="font-size: calc(0.8rem + 0.5vw);">Get Donate / Support / Sponsor easy way from Bangladesh</p>
 		<div class="mx-auto flex justify-center items-start flex-wrap py-8">
 			<section class="w-full md:w-1/2 px-4 y-2">
 				<div class="flex flex-col items-center">
 					<img id="avatar" src="assets/img/default.jpg" alt="Avatar" class="w-24 h-24 rounded-full border-4 border-gray-200 mb-2">
-					<p id="nickname" class="text-lg">@sakibweb</p>
-					<p id="fullname" class="text-2xl font-bold">Sakibur Rahman</p>
+					<p id="nickname" class="text-lg truncate" style="font-size: calc(0.8rem + 0.5vw);">@sakibweb</p>
+					<p id="fullname" class="text-2xl font-bold truncate" style="font-size: calc(0.8rem + 0.5vw);">Sakibur Rahman</p>
 					<p id="bio" class="text-sm text-center mt-2">With my full-stack development expertise and proficiency in modern technologies like Python, Node, PHP, MySQL... let's create something exceptional together!</p>
 				</div>
 			</section>
 			<section class="w-full md:w-1/2 px-4 y-2">
 				<div class="flex flex-col items-center">
 					<img src="assets/img/handshake.png" alt="Handshake" class="h-24 mb-2">
-					<h2 class="text-2xl font-bold mb-4">Donate / Support / Sponsor</h2>
+					<h2 class="text-2xl font-bold mb-4 truncate" style="font-size: calc(0.8rem + 0.5vw);">Donate / Support / Sponsor</h2>
 					<p id="motiv" class="text-lg text-center mb-4 typewriter">A support from you can motivate me more.</p>
 				</div>
 			</section>
 		</div>
 		<div class="flex items-center border-2 p-0" style="background-color: #E51855; border-radius: 10px; border-color:#ffffff;">
-			<span class="text-2xl font-bold font-bold  text-gray-100 px-2">৳</span>
+			<span class="text-lg text-gray-100 px-2">৳</span>
 			<div class="flex items-center border border-gray-300 rounded-lg mr-4">
 				<button class="px-3 py-1 font-bold focus:outline-none" onclick="decreaseValue()">-</button>
 				<input type="txt" class="px-1 py-1 w-12 text-center focus:outline-none appearance-none bg-transparent border-none" id="amount" min="1" max="25000" value="100">
 				<button class="px-3 py-1 font-bold focus:outline-none" onclick="increaseValue()">+</button>
 			</div>
-			<button class="flex items-center text-white px-4 py-2 rounded-md" style="background-color: #c11645;">
+			<button id="payN" class="flex items-center text-white px-4 py-2 rounded-md" style="background-color: #c11645;">
 				<img src="assets/img/bkash.png" alt="Pay Icon" class="w-5 h-5 mr-2">
 				<span>Pay with bKash</span>
 			</button>
@@ -81,7 +84,123 @@
             <p class="text-sm">Design by: Sajid</p>
         </div>
     </footer>
-    
+<!-- Modal -->
+<div id="paymentModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center hidden">
+  <div class="rounded-lg p-5 max-w-lg mx-auto">
+    <!-- Modal content -->
+    <div class="text-center">
+		<div id="app" class="app" data-v-app="">
+		  <div data-v-b26b81e9="" class="container">
+			<div data-v-36efec03="" data-v-b26b81e9="" class="header items-center">
+			  <div data-v-36efec03="" class="logo">
+				<img data-v-36efec03="" src="bkash/bkash_payment_logo-75c3f93d.png" alt="bKash payment logo" class="logo__img">
+			  </div>
+			</div>
+			<hr data-v-b26b81e9="" class="container__divider">
+			<div data-v-3fdd3308="" data-v-b26b81e9="" class="payment">
+			  <div data-v-3fdd3308="" class="logo">
+				<img data-v-3fdd3308="" id="merchant" src="bkash/merchant-default-logo.png" alt="merchant logo" class="logo__img">
+			  </div>
+			  <div data-v-3fdd3308="" class="merchant">
+				<h4 id="payname" data-v-3fdd3308="" class="merchant__title">Donate BD</h4>
+				<div data-v-3fdd3308="" class="merchant__invoice">
+				  <p data-v-3fdd3308="" class="merchant__invoice__title"> Donate / Support / Sponsor </p>
+				</div>
+			  </div>
+			  <div data-v-3fdd3308="" class="amount">
+				<p data-v-3fdd3308="">৳ <span data-v-3fdd3308="" class="amount__digit" id="payamount">100</span>
+				</p>
+			  </div>
+			</div>
+			<div data-v-b26b81e9="">
+			  <div id="bk-stp1">
+				<div data-v-91465d84="">
+				  <div data-v-91465d84="" class="wallet">
+					<label data-v-91465d84="" for="wallet" class="wallet__label">Enter your Account number</label>
+					<input data-v-75c8ce94="" data-v-91465d84="" type="text" class="formControl" pattern="[0-9]*" inputmode="numeric" placeholder="e.g 01XXXXXXXXX" maxlength="11" autocomplete="off" required="" id="wallet">
+					<p data-v-91465d84="" class="wallet__message"></p>
+					<p data-v-91465d84="" class="wallet__helper"> By clicking on <span data-v-91465d84="" class="wallet__helper__confirmation">Confirm</span>, you are agreeing to the <span data-v-91465d84="" class="wallet__helper__btn">
+						<a data-v-91465d84="" href="https://www.bkash.com/terms-of-use-checkout" target="_blank">terms &amp; conditions</a>
+					  </span>
+					</p>
+				  </div>
+				  <div data-v-545a8178="" data-v-91465d84="">
+					<div data-v-545a8178="" class="action">
+					  <button data-v-545a8178="" class="action__btn action__btn--close" type="button" onclick="closeModal()"> CLOSE </button>
+					  <button data-v-545a8178="" class="action__btn action__btn--confirm" type="button" onclick="vewing('bk-stp2');"> NEXT </button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <div id="bk-stp2">
+				<div data-v-91465d84="">
+				  <div data-v-91465d84="" class="wallet">
+					<label data-v-91465d84="" for="wallet" class="wallet__label">Send money to this number</label>
+					<h1 data-v-3fdd3308="" class="amount__digit text-2xl" id="sendID" style="margin-block-start: 0.20em; margin-block-end: 0.20em;">01517002352</h1>
+					<p data-v-91465d84="" class="wallet__message"></p>
+					<p data-v-91465d84="" class="wallet__helper"> By clicking on <span data-v-91465d84="" class="wallet__helper__confirmation">Confirm</span>, you are agreeing to the <span data-v-91465d84="" class="wallet__helper__btn">
+						<a data-v-91465d84="" href="https://www.bkash.com/terms-of-use-checkout" target="_blank">terms &amp; conditions</a>
+					  </span>
+					</p>
+				  </div>
+				  <div data-v-545a8178="" data-v-91465d84="">
+					<div data-v-545a8178="" class="action">
+					  <button data-v-545a8178="" class="action__btn action__btn--close" type="button" onclick="closeModal()"> CLOSE </button>
+					  <button data-v-545a8178="" class="action__btn action__btn--confirm" type="button" onclick="vewing('bk-stp3');"> NEXT </button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <div id="bk-stp3">
+				<div data-v-91465d84="">
+				  <div data-v-91465d84="" class="wallet">
+					<label data-v-91465d84="" for="wallet" class="wallet__label">Enter the transaction ID</label>
+					<input data-v-75c8ce94="" data-v-91465d84="" type="text" class="formControl" placeholder="e.g 5C242XXXXXXXXX" maxlength="20" autocomplete="off" required="" id="trnxid">
+					<p data-v-91465d84="" class="wallet__message"></p>
+					<p data-v-91465d84="" class="wallet__helper"> By clicking on <span data-v-91465d84="" class="wallet__helper__confirmation">Confirm</span>, you are agreeing to the <span data-v-91465d84="" class="wallet__helper__btn">
+						<a data-v-91465d84="" href="https://www.bkash.com/terms-of-use-checkout" target="_blank">terms &amp; conditions</a>
+					  </span>
+					</p>
+				  </div>
+				  <div data-v-545a8178="" data-v-91465d84="">
+					<div data-v-545a8178="" class="action">
+					  <button data-v-545a8178="" class="action__btn action__btn--close" type="button" onclick="closeModal()"> CLOSE </button>
+					  <button data-v-545a8178="" class="action__btn action__btn--confirm" type="button" onclick="vewing('bk-stp4');"> CONFIRM </button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <div id="bk-stp4">
+				<div data-v-91465d84="">
+				  <div data-v-91465d84="" class="wallet">
+					<h3 data-v-91465d84="" for="wallet" class="">Thank you</h3>
+					<p data-v-91465d84="" id="countDn" class="wallet__message">0</p>
+					<p data-v-91465d84="" class="wallet__helper"> By clicking on <span data-v-91465d84="" class="wallet__helper__confirmation">Confirm</span>, you are agreeing to the <span data-v-91465d84="" class="wallet__helper__btn">
+						<a data-v-91465d84="" href="https://www.bkash.com/terms-of-use-checkout" target="_blank">terms &amp; conditions</a>
+					  </span>
+					</p>
+				  </div>
+				  <div data-v-545a8178="" data-v-91465d84="">
+					<div data-v-545a8178="" class="action" style="height:10px;">
+					<h5></h5>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div data-v-2b02f28e="" data-v-b26b81e9="" class="footer">
+			  <div data-v-2b02f28e="" class="dial">
+				<img data-v-2b02f28e="" src="data:image/png;base64,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" alt="call-icon" class="dial__icon">
+				<strong data-v-2b02f28e="" class="dial__number">16247</strong>
+			  </div>
+			</div>
+		  </div>
+		</div>
+    </div>
+	<!-- Modal content -->
+  </div>
+</div>
+<!-- Modal -->
 <script src="assets/js/app.js" type="application/javascript"></script>
 </body>
 </html>

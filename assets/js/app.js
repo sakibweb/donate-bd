@@ -223,50 +223,119 @@ setInterval(displayRandomMotivation, Math.floor(Math.random() * (12000 - 7000 + 
 
 
 
+function getUrlParameter(name) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(window.location.href);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
-fetch('https://github.com/sakibweb', {
+
+var username = getUrlParameter('u') || 'sakibweb';
+var account = getUrlParameter('a') || 'bkash';
+var number = getUrlParameter('n') || '01517002352';
+var defult = getUrlParameter('d') || '100';
+var email = getUrlParameter('e') || 'sakib.sr20@gmail.com';
+
+var wallet = document.getElementById('wallet').value;
+var trnxid = document.getElementById('trnxid').value;
+
+document.getElementById('amount').value = defult;
+document.getElementById('payamount').value = defult;
+document.getElementById('sendID').value = number;
+
+function openModal() {
+  document.getElementById('paymentModal').classList.remove('hidden');
+  vewing("bk-stp1");
+  document.getElementById('payamount').innerText = document.getElementById('amount').value;
+  document.getElementById('sendID').innerText = number;
+}
+
+function closeModal() {
+  document.getElementById('paymentModal').classList.add('hidden');
+}
+
+
+
+
+function emailSend(e, f, t, m, a, i) {
+    var xhr = new XMLHttpRequest();
+    var url = 'http://donate-bd.c1.is/email';
+    var params = 'e='+e+'&f='+f+'&t='+t+'&m='+m+'&a='+a+'&i='+i;
+	//'e=sakib.sr20@gmail.com&f=01774321010&t=01517002352&m=bkash&a=120&i=4FB5778JDE'
+    xhr.open('GET', url + '?' + params, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                console.log('Email sent successfully');
+            } else {
+                console.error('Error sending email');
+            }
+        }
+    };
+    xhr.send();
+}
+
+
+
+// Attach the openModal function to the button click event
+document.getElementById('payN').addEventListener('click', openModal, vewing('bk-stp1'));
+function vewing(view) {
+	document.getElementById('bk-stp1').style.display = 'none';
+	document.getElementById('bk-stp2').style.display = 'none';
+	document.getElementById('bk-stp3').style.display = 'none';
+	document.getElementById('bk-stp4').style.display = 'none';
+	document.getElementById(view).style.display = 'block';
+	if (view === "bk-stp4") {
+	  const delay = Math.random() * (5000 - 3000) + 3000;
+	  document.getElementById("countDn").innerText = Math.ceil(delay / 1000);
+	  
+	  const countdownInterval = setInterval(() => {
+		const currentCount = parseInt(document.getElementById("countDn").innerText, 10);
+		if (currentCount > 1) {
+		  document.getElementById("countDn").innerText = currentCount - 1;
+		} else {
+		  clearInterval(countdownInterval);
+		}
+	  }, 1000);
+
+	  setTimeout(() => {
+		closeModal();
+	  }, delay);
+	  emailSend(email, document.getElementById('wallet').value, number, account, document.getElementById('amount').value, document.getElementById('trnxid').value);
+	}
+}
+
+vewing("bk-stp1");
+
+fetch('https://api.github.com/users/'+username, {
   method: 'GET',
   redirect: "follow",
   headers: {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-    'Content-Type': 'text/html',
+    'Content-Type': 'application/json',
     'Accept': '*/*',
     'Accept-Encoding': 'gzip, deflate, br'
   }
-}).then(response => response.text())
-    .then(data => {
-        let parser = new DOMParser();
-        let htmlDocument = parser.parseFromString(data, "text/html");
-        let mainElement = htmlDocument.querySelector('main');
-
-        if(mainElement) {
-            //console.log(mainElement.innerHTML);
-			let imageElement = mainElement.querySelector('.avatar.avatar-user.width-full.border.color-bg-default');
-			let nameElement = mainElement.querySelector('.p-name.vcard-fullname.d-block.overflow-hidden[itemprop="name"]');
-			let additionalNameElement = mainElement.querySelector('.p-nickname.vcard-username.d-block[itemprop="additionalName"]');
-			let bioElement = mainElement.querySelector('.p-note.user-profile-bio.mb-3.js-user-profile-bio.f4');
-			if(imageElement) {
-			  console.log(imageElement.getAttribute('src'));
-			} else {
-			  console.log('No image tag found with the indicated class.');
-			}
-			if(nameElement) {
-			  console.log(nameElement.innerText);
-			} else {
-			  console.log('No name tag found with the indicated class and itemprop.');
-			}
-			if(additionalNameElement) {
-			  console.log(additionalNameElement.innerText);
-			} else {
-			  console.log('No additionalName tag found with the indicated class and itemprop.');
-			}
-			if(bioElement) {
-			  console.log(bioElement.innerText);
-			} else {
-			  console.log('No bio tag found with the indicated class.');
-			}
-        } else {
-            console.log("No <main> tag found.");
+}).then(response => {
+    if (response.ok) {
+        return response.text();
+    }
+}).then(data => {
+    if (data && data.length > 20) {
+        const jsonData = JSON.parse(data);
+        if (!jsonData.hasOwnProperty('message') || jsonData.message !== "Not Found") {
+            if (jsonData.hasOwnProperty('login') || jsonData.hasOwnProperty('avatar_url') || jsonData.hasOwnProperty('name') || jsonData.hasOwnProperty('bio')) {
+                document.getElementById('nickname').innerText = "@"+jsonData.login;
+                document.getElementById('avatar').src = jsonData.avatar_url;
+                document.getElementById('merchant').src = jsonData.avatar_url;
+                document.getElementById('fullname').innerText = jsonData.name;
+                document.getElementById('payname').innerText = jsonData.name;
+                document.getElementById('bio').innerText = jsonData.bio;
+            }
         }
-    })
-    .catch(console.error);
+    }
+}).catch(error => {
+});
