@@ -74,7 +74,7 @@ URLs
 ```
 * HTML
 ```html
-<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" title="Donate me" rel="nofollow"><img alt="Donate me" src="http://donate-bd.c1.is/icon?i=bkash&t=Donate me"></a>
+<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" target="_blank" title="Donate me" rel="nofollow"><img alt="Donate me" src="http://donate-bd.c1.is/icon?i=bkash&t=Donate me"></a>
 ```
 
 #### Sponsor and `FUNDING.yml`
@@ -86,7 +86,7 @@ URLs
 ```
 * HTML
 ```html
-<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" title="Sponsor" rel="nofollow"><img alt="Sponsor" src="https://sakibweb.github.io/donate-bd/assets/img/sponsor.png"></a>
+<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" target="_blank" title="Sponsor" rel="nofollow"><img alt="Sponsor" src="https://sakibweb.github.io/donate-bd/assets/img/sponsor.png"></a>
 ```
 * Add  `FUNDING.yml`
 Add like this into your `[your project]/.github/FUNDING.yml`
