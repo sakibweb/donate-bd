@@ -44,33 +44,33 @@ URLs
 
 ## #bKash example usages with overview
 #### Link clickable 
-[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me")
+[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me"){:target="_blank"}
 #### Code
 * Markdown
 ```markdown
-[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me")
+[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me"){:target="_blank"}
 ```
 * HTML
 ```html
-<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" title="Donate me" rel="nofollow">Donate me</a>
+<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" target="_blank" title="Donate me" rel="nofollow">Donate me</a>
 ```
 #### Link clickable 
-[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me")
+[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me"){:target="_blank"}
 #### Code
 * Markdown
 ```markdown
-[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me")
+[Donate me](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me"){:target="_blank"}
 ```
 * HTML
 ```html
-<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" title="Donate me" rel="nofollow">Donate me</a>
+<a href="http://donate-bd.c1.is?u=sakibweb&amp;a=bkash&amp;n=01774321010&amp;d=200&amp;e=sakibdev.me@gmail.com" target="_blank" title="Donate me" rel="nofollow">Donate me</a>
 ```
 #### Link with icon
-[![Donate me](http://donate-bd.c1.is/icon?i=bkash&t=Donate%20me)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me")
+[![Donate me](http://donate-bd.c1.is/icon?i=bkash&t=Donate%20me)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me"){:target="_blank"}
 #### Code
 * Markdown
 ```markdown
-[![Donate me](http://donate-bd.c1.is/icon?i=bkash&t=Donate%20me)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me")
+[![Donate me](http://donate-bd.c1.is/icon?i=bkash&t=Donate%20me)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Donate me"){:target="_blank"}
 ```
 * HTML
 ```html
@@ -78,11 +78,11 @@ URLs
 ```
 
 #### Sponsor and `FUNDING.yml`
-[![Sponsor](https://sakibweb.github.io/donate-bd/assets/img/sponsor.png)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Sponsor")
+[![Sponsor](https://sakibweb.github.io/donate-bd/assets/img/sponsor.png)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Sponsor"){:target="_blank"}
 #### Code
 * Markdown
 ```markdown
-[![Sponsor](https://sakibweb.github.io/donate-bd/assets/img/sponsor.png)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Sponsor")
+[![Sponsor](https://sakibweb.github.io/donate-bd/assets/img/sponsor.png)](http://donate-bd.c1.is?u=sakibweb&a=bkash&n=01774321010&d=200&e=sakibdev.me@gmail.com "Sponsor"){:target="_blank"}
 ```
 * HTML
 ```html
